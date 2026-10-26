@@ -5,12 +5,14 @@
 [![CI](https://github.com/Sidharth-Singh10/tenon/actions/workflows/ci.yml/badge.svg)](https://github.com/Sidharth-Singh10/tenon/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-5d91e9.svg)](LICENSE)
 
-<video src="https://raw.githubusercontent.com/Sidharth-Singh10/tenon/master/media/tenon-intro-1080p.webm" controls muted width="100%"></video>
+[![Tenon — 60-second intro preview](media/tenon-intro-preview.webp)](media/tenon-intro-1080p.webm)
 
-[Watch the 60-second intro](media/tenon-intro-1080p.webm) — **silent, 1920×1080, 30 fps, WebM
-(VP9)**. The 4.4 MB MP4 master is still in [`media/`](media/tenon-intro-1080p.mp4) for download. It
-explains the gap between seeing and changing, what Tenon is, the typed envelope, the audit log,
-human approval for destructive edits, undo as a new turn, and the two adapters.
+The preview loops the definition scene. [Open the full 60-second WebM](media/tenon-intro-1080p.webm) —
+**silent, 1920×1080, 30 fps, VP9**. GitHub strips `<video>` tags from READMEs, so the WebM opens as
+a file while the looping preview carries the motion inline. The 4.4 MB MP4 master is still in
+[`media/`](media/tenon-intro-1080p.mp4) for download. It explains the gap between seeing and
+changing, what Tenon is, the typed envelope, the audit log, human approval for destructive edits,
+undo as a new turn, and the two adapters.
 
 ## What Tenon is
 
@@ -67,7 +69,7 @@ the published build rather than a live registry entry. The landing page is deplo
 | `examples/` | SDK quickstart |
 | `docs/` | SDK guide, release guide, v0.1.0 notes |
 | `launch/` | Launch essay and post drafts |
-| `media/` | 60-second intro (WebM + MP4) and poster |
+| `media/` | 60-second intro (WebM + MP4), looping preview, and poster |
 | `scripts/` | Distribution smoke test and site build |
 | `TENON.md` | Protocol and product build plan |
 
@@ -212,8 +214,9 @@ Run Amaterasu locally to connect a model.
 - [`TENON.md`](TENON.md) — protocol and product build plan
 - [`launch/essay.md`](launch/essay.md) — why screenshots are the wrong interface
 - [`CHANGELOG.md`](CHANGELOG.md) — release history
-- [`media/tenon-intro-1080p.webm`](media/tenon-intro-1080p.webm) — 60-second intro (WebM, inline)
+- [`media/tenon-intro-1080p.webm`](media/tenon-intro-1080p.webm) — 60-second intro (WebM)
 - [`media/tenon-intro-1080p.mp4`](media/tenon-intro-1080p.mp4) — 60-second intro (MP4 master)
+- [`media/tenon-intro-preview.webp`](media/tenon-intro-preview.webp) — looping inline preview
 
 ## Contributing
 
