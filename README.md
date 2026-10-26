@@ -174,8 +174,9 @@ forward-only turn undo. See [`spec/protocol.md`](spec/protocol.md) for the contr
 - **Weave** — the graph adapter: applies `graph.*` envelopes, merges duplicate nodes, computes
   inverses, and acks the journal. [Source](https://github.com/Sidharth-Singh10/weave)
 
-The chart adapter lives in this repository (`packages/canvas-chart`); Amaterasu consumes it. Weave
-keeps its adapter with its own frontend.
+The chart adapter lives in this repository (`packages/canvas-chart`). Amaterasu currently carries
+the same adapter inside its monorepo for its workspace build and will consume the published package
+after the release. Weave keeps its graph adapter with its own frontend.
 
 ## Landing page and demo
 
