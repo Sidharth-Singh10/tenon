@@ -5,9 +5,10 @@
 [![CI](https://github.com/Sidharth-Singh10/tenon/actions/workflows/ci.yml/badge.svg)](https://github.com/Sidharth-Singh10/tenon/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-5d91e9.svg)](LICENSE)
 
-[![Tenon — 60-second intro](media/tenon-intro-poster.jpg)](media/tenon-intro-1080p.mp4)
+<video src="https://raw.githubusercontent.com/Sidharth-Singh10/tenon/master/media/tenon-intro-1080p.webm" controls muted width="100%"></video>
 
-[Watch the 60-second intro](media/tenon-intro-1080p.mp4) — **silent, 1920×1080, 30 fps**. It
+[Watch the 60-second intro](media/tenon-intro-1080p.webm) — **silent, 1920×1080, 30 fps, WebM
+(VP9)**. The 4.4 MB MP4 master is still in [`media/`](media/tenon-intro-1080p.mp4) for download. It
 explains the gap between seeing and changing, what Tenon is, the typed envelope, the audit log,
 human approval for destructive edits, undo as a new turn, and the two adapters.
 
@@ -66,7 +67,7 @@ the published build rather than a live registry entry. The landing page is deplo
 | `examples/` | SDK quickstart |
 | `docs/` | SDK guide, release guide, v0.1.0 notes |
 | `launch/` | Launch essay and post drafts |
-| `media/` | 60-second intro video and poster |
+| `media/` | 60-second intro (WebM + MP4) and poster |
 | `scripts/` | Distribution smoke test and site build |
 | `TENON.md` | Protocol and product build plan |
 
@@ -211,7 +212,8 @@ Run Amaterasu locally to connect a model.
 - [`TENON.md`](TENON.md) — protocol and product build plan
 - [`launch/essay.md`](launch/essay.md) — why screenshots are the wrong interface
 - [`CHANGELOG.md`](CHANGELOG.md) — release history
-- [`media/tenon-intro-1080p.mp4`](media/tenon-intro-1080p.mp4) — 60-second intro
+- [`media/tenon-intro-1080p.webm`](media/tenon-intro-1080p.webm) — 60-second intro (WebM, inline)
+- [`media/tenon-intro-1080p.mp4`](media/tenon-intro-1080p.mp4) — 60-second intro (MP4 master)
 
 ## Contributing
 
