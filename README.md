@@ -5,12 +5,12 @@
 [![CI](https://github.com/Sidharth-Singh10/tenon/actions/workflows/ci.yml/badge.svg)](https://github.com/Sidharth-Singh10/tenon/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-5d91e9.svg)](LICENSE)
 
-[![Tenon — 60-second intro preview](media/tenon-intro-preview.webp)](media/tenon-intro-1080p.webm)
+[![Tenon — 60-second intro](media/tenon-intro-preview.webp)](media/tenon-intro-1080p.webm)
 
-The preview loops the definition scene. [Open the full 60-second WebM](media/tenon-intro-1080p.webm) —
-**silent, 1920×1080, 30 fps, VP9**. GitHub strips `<video>` tags from READMEs, so the WebM opens as
-a file while the looping preview carries the motion inline. The 4.4 MB MP4 master is still in
-[`media/`](media/tenon-intro-1080p.mp4) for download. It explains the gap between seeing and
+The full 60-second cut loops inline above as a WebP (720×405, 12 fps, 555 KB). [Open the 30 fps
+WebM](media/tenon-intro-1080p.webm) — **silent, 1920×1080, VP9** — or take the 4.4 MB MP4 master
+from [`media/`](media/tenon-intro-1080p.mp4). GitHub strips `<video>` tags from READMEs, so the WebP
+carries the motion and the WebM is the full-quality file. It explains the gap between seeing and
 changing, what Tenon is, the typed envelope, the audit log, human approval for destructive edits,
 undo as a new turn, and the two adapters.
 
@@ -216,7 +216,7 @@ Run Amaterasu locally to connect a model.
 - [`CHANGELOG.md`](CHANGELOG.md) — release history
 - [`media/tenon-intro-1080p.webm`](media/tenon-intro-1080p.webm) — 60-second intro (WebM)
 - [`media/tenon-intro-1080p.mp4`](media/tenon-intro-1080p.mp4) — 60-second intro (MP4 master)
-- [`media/tenon-intro-preview.webp`](media/tenon-intro-preview.webp) — looping inline preview
+- [`media/tenon-intro-preview.webp`](media/tenon-intro-preview.webp) — full-length looping preview
 
 ## Contributing
 
