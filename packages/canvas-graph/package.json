@@ -1,0 +1,53 @@
+{
+  "name": "@tenon-protocol/graph",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Graph adapter for Tenon: schemas, reducer, inverses, and merge",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sidharth-Singh10/tenon.git",
+    "directory": "packages/canvas-graph"
+  },
+  "homepage": "https://sidharth-singh10.github.io/tenon/",
+  "bugs": {
+    "url": "https://github.com/Sidharth-Singh10/tenon/issues"
+  },
+  "keywords": [
+    "tenon",
+    "graph",
+    "knowledge-graph",
+    "adapter",
+    "undo",
+    "zod"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "prepack": "npm run build",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "zod": "^4.6.5"
+  }
+}

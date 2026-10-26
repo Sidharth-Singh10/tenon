@@ -1,0 +1,52 @@
+{
+  "name": "@tenon-protocol/conformance",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Language-agnostic conformance fixtures and runner for Tenon",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sidharth-Singh10/tenon.git",
+    "directory": "packages/canvas-conformance"
+  },
+  "homepage": "https://sidharth-singh10.github.io/tenon/",
+  "bugs": {
+    "url": "https://github.com/Sidharth-Singh10/tenon/issues"
+  },
+  "keywords": [
+    "tenon",
+    "conformance",
+    "protocol",
+    "testing",
+    "fixtures"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json && node scripts/copy-fixtures.mjs",
+    "prepack": "npm run build",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@tenon-protocol/core": "^0.1.0"
+  }
+}

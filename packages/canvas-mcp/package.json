@@ -1,0 +1,59 @@
+{
+  "name": "@tenon-protocol/mcp",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "MCP server for Tenon document state, ops, undo, and history",
+  "license": "MIT",
+  "mcpName": "io.github.Sidharth-Singh10/tenon",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sidharth-Singh10/tenon.git",
+    "directory": "packages/canvas-mcp"
+  },
+  "homepage": "https://sidharth-singh10.github.io/tenon/",
+  "bugs": {
+    "url": "https://github.com/Sidharth-Singh10/tenon/issues"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "tenon",
+    "ai-agents",
+    "audit",
+    "undo"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "tenon-mcp": "./dist/main.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "prepack": "npm run build",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@tenon-protocol/core": "^0.1.0",
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "zod": "^4.6.5"
+  }
+}

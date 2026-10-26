@@ -1,0 +1,35 @@
+{
+  "name": "tenon",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Typed, reversible, auditable document operations for humans and AI agents.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sidharth-Singh10/tenon.git"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build:packages": "npm run build --workspace @tenon-protocol/core && npm run build --workspace @tenon-protocol/chart && npm run build --workspace @tenon-protocol/graph && npm run build --workspace @tenon-protocol/conformance && npm run build --workspace @tenon-protocol/mcp",
+    "clean:packages": "rm -rf packages/*/dist",
+    "verify:dist": "node scripts/verify-dist.mjs",
+    "build:site": "node scripts/build-site.mjs",
+    "preview:site": "python3 -m http.server 4173 --directory _site",
+    "test:core": "npm run test --workspace @tenon-protocol/core",
+    "test:chart": "npm run test --workspace @tenon-protocol/chart",
+    "test:graph": "npm run test --workspace @tenon-protocol/graph",
+    "test:mcp": "npm run test --workspace @tenon-protocol/mcp",
+    "test:conformance": "npm run test --workspace @tenon-protocol/conformance",
+    "test:packages": "npm run test:core && npm run test:chart && npm run test:graph && npm run test:mcp && npm run test:conformance",
+    "typecheck:packages": "npm run typecheck --workspace @tenon-protocol/core && npm run typecheck --workspace @tenon-protocol/chart && npm run typecheck --workspace @tenon-protocol/graph && npm run typecheck --workspace @tenon-protocol/mcp && npm run typecheck --workspace @tenon-protocol/conformance",
+    "schemas": "node packages/canvas-core/scripts/emit-schemas.ts",
+    "verify": "npm run typecheck:packages && npm run test:packages"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.3",
+    "typescript": "~5.9.0",
+    "vitest": "^5.0.1"
+  }
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# Noindex preview until the SDK packages are published.

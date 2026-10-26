@@ -1,0 +1,14 @@
+node_modules/
+.next/
+.svelte-kit/
+build/
+out/
+dist/
+_site/
+target/
+*.tgz
+*.log
+.env
+.env.*
+!.env.example
+.DS_Store

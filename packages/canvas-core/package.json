@@ -1,0 +1,55 @@
+{
+  "name": "@tenon-protocol/core",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Tenon protocol: envelope, ack, capability, audit, and turn schemas",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sidharth-Singh10/tenon.git",
+    "directory": "packages/canvas-core"
+  },
+  "homepage": "https://sidharth-singh10.github.io/tenon/",
+  "bugs": {
+    "url": "https://github.com/Sidharth-Singh10/tenon/issues"
+  },
+  "keywords": [
+    "tenon",
+    "mcp",
+    "model-context-protocol",
+    "ai-agents",
+    "protocol",
+    "audit",
+    "undo",
+    "zod"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "prepack": "npm run build",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "zod": "^4.6.5"
+  }
+}

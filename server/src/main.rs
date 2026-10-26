@@ -1,0 +1,85 @@
+use std::{sync::Arc, time::Duration};
+
+use anyhow::Context;
+use tenon_server::{
+    api::AppState, bridge::Bridge, build_router, cache::Cache, config::Config,
+    dispatch::OpDispatch, indmoney::IndmoneyClient, journal::JournalStore,
+    workspace::WorkspaceStore,
+};
+use tower_http::services::{ServeDir, ServeFile};
+use tracing_subscriber::EnvFilter;
+
+#[tokio::main]
+async fn main() -> anyhow::Result<()> {
+    tracing_subscriber::fmt()
+        .with_env_filter(
+            EnvFilter::try_from_default_env().unwrap_or_else(|_| EnvFilter::new("info")),
+        )
+        .init();
+
+    let config = Config::from_env();
+    let http = reqwest::Client::builder()
+        .user_agent(format!("tenon/{}", env!("CARGO_PKG_VERSION")))
+        .timeout(Duration::from_secs(30))
+        .build()?;
+
+    let indmoney = Arc::new(IndmoneyClient::new(&config, http).await);
+    let journal = Arc::new(
+        JournalStore::open_with_key(&config.journal_db, &config.data_dir.join("capability.key"))
+            .with_context(|| format!("opening journal db {}", config.journal_db.display()))?,
+    );
+    journal.bind_local_agent(&config.opencode_agent);
+    let bridge = Bridge::new(&config, journal.clone());
+    bridge.spawn_event_pump();
+    {
+        let journal = journal.clone();
+        tokio::spawn(async move {
+            let mut tick = tokio::time::interval(Duration::from_secs(15));
+            loop {
+                tick.tick().await;
+                match journal.expire_pending(30) {
+                    Ok(0) => {}
+                    Ok(expired) => tracing::warn!(expired, "expired unacknowledged journal ops"),
+                    Err(error) => tracing::warn!(%error, "expiring journal ops failed"),
+                }
+            }
+        });
+    }
+    let workspaces = Arc::new(
+        WorkspaceStore::open(&config.workspaces_db)
+            .with_context(|| format!("opening workspace db {}", config.workspaces_db.display()))?,
+    );
+    let state = AppState {
+        config: config.clone(),
+        indmoney,
+        cache: Arc::new(Cache::new()),
+        bridge,
+        journal,
+        dispatch: OpDispatch::new(),
+        workspaces,
+    };
+
+    let mut app = build_router(state);
+    if let Some(dir) = &config.static_dir {
+        let index = dir.join("index.html");
+        anyhow::ensure!(
+            index.is_file(),
+            "static index not found: {}",
+            index.display()
+        );
+        // SPA fallback: unknown paths serve index.html with a 200 (not_found_service would force 404).
+        app = app.fallback_service(ServeDir::new(dir).fallback(ServeFile::new(&index)));
+        tracing::info!(static_dir = %dir.display(), "serving built frontend");
+    }
+
+    let listener = tokio::net::TcpListener::bind(&config.bind).await?;
+    tracing::info!(bind = %config.bind, data_dir = %config.data_dir.display(), "tenon-server listening");
+    axum::serve(listener, app)
+        .with_graceful_shutdown(shutdown_signal())
+        .await?;
+    Ok(())
+}
+
+async fn shutdown_signal() {
+    let _ = tokio::signal::ctrl_c().await;
+}
